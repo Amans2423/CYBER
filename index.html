@@ -39,7 +39,7 @@
             color: #007BFF;
             margin-bottom: 20px;
         }
-        .video-button, .play-button {
+        .video-button {
             display: block;
             width: 250px;
             margin: 10px auto 30px auto;
@@ -52,12 +52,20 @@
             font-weight: bold;
             font-size: 1.2em;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
         }
         video {
-            display: none;
+            display: block;
             margin: 30px auto;
             max-width: 100%;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+        }
+        iframe {
+            display: block;
+            margin: 30px auto;
+            max-width: 100%;
+            width: 100%;
+            height: 400px;
             border: 2px solid #007BFF;
             border-radius: 10px;
         }
@@ -67,7 +75,7 @@
 
     <div class="container">
 
-        <a href="#video" class="video-button">🎥 Watch Hologram projector Video</a>
+        <a href="#video" class="video-button">🎥 Watch Video</a>
 
         <div class="message">🌟 Stay Safe, Stay Smart! Your Online Safety Matters! 🔐🌍</div>
 
@@ -96,14 +104,32 @@
 
         <a href="more.html" class="video-button" style="background-color:#007BFF">🔎 More on Cyber Security 🔒</a>
 
-        <!-- 🎬 Video Section with Play Button -->
-        <div id="video" style="text-align: center;">
-            <h2>🎬 Hologram projector</h2>
-            <video id="hologramVideo" controls>
+        <!-- 🎬 Local Video Section -->
+        <div id="video">
+            <h2 style="text-align:center;">🎬 Cyber Safety Video</h2>
+            <video controls>
                 <source src="hologram.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <button class="play-button" onclick="playVideo()">▶️ Play Hologram Video</button>
+        </div>
+
+        <!-- 📺 Embedded YouTube Videos -->
+        <div>
+            <h2 style="text-align:center;">📺 YouTube Video 1 – Cyber Safety Animation</h2>
+            <iframe src="https://www.youtube.com/embed/yJJAutVQWAg?si=p7CsfXZtlER-DD_s" 
+                    title="YouTube Video 1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+
+            <h2 style="text-align:center;">📺 YouTube Video 2 – Cyber Security Tips</h2>
+            <iframe src="https://www.youtube.com/embed/MFD_iT1JfIo" 
+                    title="YouTube Video 2" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
         </div>
 
     </div>
@@ -112,14 +138,6 @@
         🔹 Why did the computer catch a cold? <br>
         🔹 Because it left its Windows open! 🏡💨😂
     </div>
-
-    <script>
-        function playVideo() {
-            const video = document.getElementById("hologramVideo");
-            video.style.display = "block";
-            video.play();
-        }
-    </script>
 
 </body>
 </html>
