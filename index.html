@@ -39,7 +39,7 @@
             color: #007BFF;
             margin-bottom: 20px;
         }
-        .video-button {
+        .video-button, .play-button {
             display: block;
             width: 250px;
             margin: 10px auto 30px auto;
@@ -52,9 +52,10 @@
             font-weight: bold;
             font-size: 1.2em;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
         video {
-            display: block;
+            display: none;
             margin: 30px auto;
             max-width: 100%;
             border: 2px solid #007BFF;
@@ -80,8 +81,6 @@
             <p>Why does it matter? To keep our personal information and identity safe! 🔑</p>
         </div>
 
-        <!-- other content unchanged -->
-
         <div class="slide">
             <h2>🚨 How to Stay Safe from Cyberbullying?</h2>
             <ul>
@@ -97,13 +96,14 @@
 
         <a href="more.html" class="video-button" style="background-color:#007BFF">🔎 More on Cyber Security 🔒</a>
 
-        <!-- 🎬 Video Section -->
-        <div id="video">
-            <h2 style="text-align:center;">🎬 Cyber Safety Video</h2>
-            <video controls>
+        <!-- 🎬 Video Section with Play Button -->
+        <div id="video" style="text-align: center;">
+            <h2>🎬 Cyber Safety Video</h2>
+            <video id="hologramVideo" controls>
                 <source src="hologram.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            <button class="play-button" onclick="playVideo()">▶️ Play Hologram Video</button>
         </div>
 
     </div>
@@ -112,6 +112,14 @@
         🔹 Why did the computer catch a cold? <br>
         🔹 Because it left its Windows open! 🏡💨😂
     </div>
+
+    <script>
+        function playVideo() {
+            const video = document.getElementById("hologramVideo");
+            video.style.display = "block";
+            video.play();
+        }
+    </script>
 
 </body>
 </html>
