@@ -1,145 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security – Stay Safe Online</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #007BFF;
-        }
-        .slide {
-            margin-bottom: 30px;
-            padding: 15px;
-            border-left: 5px solid #007BFF;
-            background: #f9f9f9;
-        }
-        .tips {
-            font-style: italic;
-            color: #555;
-        }
-        .message {
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #007BFF;
-            margin-bottom: 20px;
-        }
-        .video-button {
-            display: block;
-            width: 250px;
-            margin: 10px auto 30px auto;
-            padding: 12px;
-            text-align: center;
-            background-color: #28a745;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.2em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        video {
-            display: block;
-            margin: 30px auto;
-            max-width: 100%;
-            border: 2px solid #007BFF;
-            border-radius: 10px;
-        }
-        iframe {
-            display: block;
-            margin: 30px auto;
-            max-width: 100%;
-            width: 100%;
-            height: 400px;
-            border: 2px solid #007BFF;
-            border-radius: 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICT Skills – I | MCQ Quiz</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#eef4ff,#f8fbff);color:#1f2937}
+.container{width:min(920px,94%);margin:28px auto 50px}
+.header{background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;padding:28px 24px;border-radius:18px;box-shadow:0 10px 25px rgba(37,99,235,.18);margin-bottom:16px}
+.header h1{margin:0 0 8px;font-size:clamp(25px,4vw,36px)}
+.header p{margin:0;opacity:.93}
+.instructions{background:#fff;border-radius:14px;padding:15px 18px;margin-bottom:12px;box-shadow:0 5px 18px rgba(15,23,42,.06);font-weight:600;color:#475569}
+.progress-wrap{position:sticky;top:8px;z-index:10;background:rgba(248,251,255,.94);backdrop-filter:blur(8px);padding:8px 0 12px}
+.progress-text{font-size:14px;font-weight:700;margin-bottom:7px;color:#475569}
+.progress{height:9px;background:#dbeafe;border-radius:20px;overflow:hidden}
+.progress-bar{width:0;height:100%;background:#2563eb;transition:width .25s ease}
+.quiz-card{background:#fff;border-radius:16px;padding:21px;margin-bottom:15px;box-shadow:0 5px 18px rgba(15,23,42,.07)}
+.q-number{color:#2563eb;font-size:14px;font-weight:700;margin-bottom:7px}
+.quiz-card h2{margin:0 0 16px;font-size:18px;line-height:1.45}
+.options{display:grid;gap:9px}
+.option{position:relative}
+.option input{position:absolute;opacity:0}
+.option label{display:block;padding:13px 14px;border:1.5px solid #dbe2ea;border-radius:11px;cursor:pointer;transition:.2s;background:#fff;line-height:1.4}
+.option label:hover{border-color:#93c5fd;background:#eff6ff}
+.option input:checked+label{border-color:#2563eb;background:#eff6ff;font-weight:700}
+.option label.correct{border-color:#16a34a!important;background:#f0fdf4!important}
+.option label.wrong{border-color:#dc2626!important;background:#fef2f2!important}
+.submit-btn,.restart-btn{width:100%;border:0;border-radius:12px;padding:15px;font-size:17px;font-weight:700;cursor:pointer}
+.submit-btn{background:#2563eb;color:#fff;box-shadow:0 8px 18px rgba(37,99,235,.2)}
+.submit-btn:hover{background:#1d4ed8}
+.result{display:none;text-align:center;background:#fff;border-radius:16px;padding:25px;box-shadow:0 5px 18px rgba(15,23,42,.07);border:2px solid #bfdbfe}
+.score{font-size:46px;font-weight:800;color:#2563eb;margin:8px 0}
+.result p{line-height:1.5}
+.restart-btn{margin-top:10px;background:#111827;color:#fff}
+.footer{text-align:center;color:#64748b;font-size:13px;margin-top:20px}
+@media(max-width:600px){.container{width:96%;margin-top:15px}.header,.quiz-card,.result{padding:17px}.quiz-card h2{font-size:16px}}
+</style>
 </head>
 <body>
+<div class="container">
+<div class="header">
+<h1>ICT Skills – I</h1>
+<p>20 Questions • MCQ Quiz</p>
+</div>
+<div class="instructions">Select one correct answer for each question and click <b>Submit Quiz</b> at the end.</div>
+<div class="progress-wrap">
+<div class="progress-text" id="progressText">0 of 20 answered</div>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+</div>
+<form id="quizForm">
+<div class="quiz-card">
+<div class="q-number">Question 1</div>
+<h2>Which part of the computer is known as the brain of the computer?</h2>
+<div class="options">
+<div class="option"><input id="q1A" type="radio" name="q1" value="A"><label for="q1A">A. CPU</label></div>
+<div class="option"><input id="q1B" type="radio" name="q1" value="B"><label for="q1B">B. Monitor</label></div>
+<div class="option"><input id="q1C" type="radio" name="q1" value="C"><label for="q1C">C. Keyboard</label></div>
+<div class="option"><input id="q1D" type="radio" name="q1" value="D"><label for="q1D">D. Printer</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 2</div>
+<h2>Which two broad categories are used to classify computer components?</h2>
+<div class="options">
+<div class="option"><input id="q2A" type="radio" name="q2" value="A"><label for="q2A">A. Input and output</label></div>
+<div class="option"><input id="q2B" type="radio" name="q2" value="B"><label for="q2B">B. Hardware and software</label></div>
+<div class="option"><input id="q2C" type="radio" name="q2" value="C"><label for="q2C">C. RAM and ROM</label></div>
+<div class="option"><input id="q2D" type="radio" name="q2" value="D"><label for="q2D">D. Files and folders</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 3</div>
+<h2>Which part of the CPU controls and coordinates the activities of the computer?</h2>
+<div class="options">
+<div class="option"><input id="q3A" type="radio" name="q3" value="A"><label for="q3A">A. Memory Unit</label></div>
+<div class="option"><input id="q3B" type="radio" name="q3" value="B"><label for="q3B">B. Control Unit</label></div>
+<div class="option"><input id="q3C" type="radio" name="q3" value="C"><label for="q3C">C. Processing Unit</label></div>
+<div class="option"><input id="q3D" type="radio" name="q3" value="D"><label for="q3D">D. Storage Unit</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 4</div>
+<h2>Which unit of the CPU performs arithmetic and logical operations?</h2>
+<div class="options">
+<div class="option"><input id="q4A" type="radio" name="q4" value="A"><label for="q4A">A. Control Unit</label></div>
+<div class="option"><input id="q4B" type="radio" name="q4" value="B"><label for="q4B">B. Memory Unit</label></div>
+<div class="option"><input id="q4C" type="radio" name="q4" value="C"><label for="q4C">C. Processing Unit</label></div>
+<div class="option"><input id="q4D" type="radio" name="q4" value="D"><label for="q4D">D. Input Unit</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 5</div>
+<h2>Which unit stores data, instructions and results for processing?</h2>
+<div class="options">
+<div class="option"><input id="q5A" type="radio" name="q5" value="A"><label for="q5A">A. Memory Unit</label></div>
+<div class="option"><input id="q5B" type="radio" name="q5" value="B"><label for="q5B">B. Control Unit</label></div>
+<div class="option"><input id="q5C" type="radio" name="q5" value="C"><label for="q5C">C. Processing Unit</label></div>
+<div class="option"><input id="q5D" type="radio" name="q5" value="D"><label for="q5D">D. Output Unit</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 6</div>
+<h2>Which type of memory is temporary and loses its data when the computer is switched off?</h2>
+<div class="options">
+<div class="option"><input id="q6A" type="radio" name="q6" value="A"><label for="q6A">A. ROM</label></div>
+<div class="option"><input id="q6B" type="radio" name="q6" value="B"><label for="q6B">B. RAM</label></div>
+<div class="option"><input id="q6C" type="radio" name="q6" value="C"><label for="q6C">C. Hard disk</label></div>
+<div class="option"><input id="q6D" type="radio" name="q6" value="D"><label for="q6D">D. CD-ROM</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 7</div>
+<h2>Which type of memory normally stores instructions that are not lost when power is switched off?</h2>
+<div class="options">
+<div class="option"><input id="q7A" type="radio" name="q7" value="A"><label for="q7A">A. RAM</label></div>
+<div class="option"><input id="q7B" type="radio" name="q7" value="B"><label for="q7B">B. ROM</label></div>
+<div class="option"><input id="q7C" type="radio" name="q7" value="C"><label for="q7C">C. Cache only</label></div>
+<div class="option"><input id="q7D" type="radio" name="q7" value="D"><label for="q7D">D. Folder</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 8</div>
+<h2>What is the first basic function performed when a computer starts?</h2>
+<div class="options">
+<div class="option"><input id="q8A" type="radio" name="q8" value="A"><label for="q8A">A. It opens a web browser</label></div>
+<div class="option"><input id="q8B" type="radio" name="q8" value="B"><label for="q8B">B. It performs the booting process</label></div>
+<div class="option"><input id="q8C" type="radio" name="q8" value="C"><label for="q8C">C. It sends an email</label></div>
+<div class="option"><input id="q8D" type="radio" name="q8" value="D"><label for="q8D">D. It creates a folder</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 9</div>
+<h2>Which of the following is an example of hardware?</h2>
+<div class="options">
+<div class="option"><input id="q9A" type="radio" name="q9" value="A"><label for="q9A">A. Windows</label></div>
+<div class="option"><input id="q9B" type="radio" name="q9" value="B"><label for="q9B">B. MS Word</label></div>
+<div class="option"><input id="q9C" type="radio" name="q9" value="C"><label for="q9C">C. Keyboard</label></div>
+<div class="option"><input id="q9D" type="radio" name="q9" value="D"><label for="q9D">D. Web browser</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 10</div>
+<h2>Which of the following is an example of software?</h2>
+<div class="options">
+<div class="option"><input id="q10A" type="radio" name="q10" value="A"><label for="q10A">A. Mouse</label></div>
+<div class="option"><input id="q10B" type="radio" name="q10" value="B"><label for="q10B">B. Monitor</label></div>
+<div class="option"><input id="q10C" type="radio" name="q10" value="C"><label for="q10C">C. Keyboard</label></div>
+<div class="option"><input id="q10D" type="radio" name="q10" value="D"><label for="q10D">D. Operating system</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 11</div>
+<h2>What is a file?</h2>
+<div class="options">
+<div class="option"><input id="q11A" type="radio" name="q11" value="A"><label for="q11A">A. A collection of related files</label></div>
+<div class="option"><input id="q11B" type="radio" name="q11" value="B"><label for="q11B">B. A named collection of data stored on a computer</label></div>
+<div class="option"><input id="q11C" type="radio" name="q11" value="C"><label for="q11C">C. A physical computer part</label></div>
+<div class="option"><input id="q11D" type="radio" name="q11" value="D"><label for="q11D">D. A web browser button</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 12</div>
+<h2>What is a folder mainly used for?</h2>
+<div class="options">
+<div class="option"><input id="q12A" type="radio" name="q12" value="A"><label for="q12A">A. To organize and store files</label></div>
+<div class="option"><input id="q12B" type="radio" name="q12" value="B"><label for="q12B">B. To perform calculations</label></div>
+<div class="option"><input id="q12C" type="radio" name="q12" value="C"><label for="q12C">C. To connect to the internet</label></div>
+<div class="option"><input id="q12D" type="radio" name="q12" value="D"><label for="q12D">D. To display web pages</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 13</div>
+<h2>What is the Internet?</h2>
+<div class="options">
+<div class="option"><input id="q13A" type="radio" name="q13" value="A"><label for="q13A">A. A single computer</label></div>
+<div class="option"><input id="q13B" type="radio" name="q13" value="B"><label for="q13B">B. A worldwide network of connected computers and devices</label></div>
+<div class="option"><input id="q13C" type="radio" name="q13" value="C"><label for="q13C">C. A type of RAM</label></div>
+<div class="option"><input id="q13D" type="radio" name="q13" value="D"><label for="q13D">D. A software application only</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 14</div>
+<h2>What is a hyperlink?</h2>
+<div class="options">
+<div class="option"><input id="q14A" type="radio" name="q14" value="A"><label for="q14A">A. A link that takes you to another webpage, file or location when selected</label></div>
+<div class="option"><input id="q14B" type="radio" name="q14" value="B"><label for="q14B">B. A computer&#x27;s memory chip</label></div>
+<div class="option"><input id="q14C" type="radio" name="q14" value="C"><label for="q14C">C. A type of folder</label></div>
+<div class="option"><input id="q14D" type="radio" name="q14" value="D"><label for="q14D">D. A password used for email</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 15</div>
+<h2>What is email?</h2>
+<div class="options">
+<div class="option"><input id="q15A" type="radio" name="q15" value="A"><label for="q15A">A. Electronic mail used to send and receive messages</label></div>
+<div class="option"><input id="q15B" type="radio" name="q15" value="B"><label for="q15B">B. A program used only to browse websites</label></div>
+<div class="option"><input id="q15C" type="radio" name="q15" value="C"><label for="q15C">C. A type of computer hardware</label></div>
+<div class="option"><input id="q15D" type="radio" name="q15" value="D"><label for="q15D">D. A folder on a computer</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 16</div>
+<h2>Which part of a web browser displays the address of the current webpage?</h2>
+<div class="options">
+<div class="option"><input id="q16A" type="radio" name="q16" value="A"><label for="q16A">A. Address bar</label></div>
+<div class="option"><input id="q16B" type="radio" name="q16" value="B"><label for="q16B">B. Status bar</label></div>
+<div class="option"><input id="q16C" type="radio" name="q16" value="C"><label for="q16C">C. Scroll bar</label></div>
+<div class="option"><input id="q16D" type="radio" name="q16" value="D"><label for="q16D">D. Taskbar</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 17</div>
+<h2>Which browser button is commonly used to return to the webpage visited just before the current one?</h2>
+<div class="options">
+<div class="option"><input id="q17A" type="radio" name="q17" value="A"><label for="q17A">A. Refresh</label></div>
+<div class="option"><input id="q17B" type="radio" name="q17" value="B"><label for="q17B">B. Back</label></div>
+<div class="option"><input id="q17C" type="radio" name="q17" value="C"><label for="q17C">C. Home</label></div>
+<div class="option"><input id="q17D" type="radio" name="q17" value="D"><label for="q17D">D. Forward</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 18</div>
+<h2>Which browser button reloads the current webpage?</h2>
+<div class="options">
+<div class="option"><input id="q18A" type="radio" name="q18" value="A"><label for="q18A">A. Back</label></div>
+<div class="option"><input id="q18B" type="radio" name="q18" value="B"><label for="q18B">B. Forward</label></div>
+<div class="option"><input id="q18C" type="radio" name="q18" value="C"><label for="q18C">C. Refresh</label></div>
+<div class="option"><input id="q18D" type="radio" name="q18" value="D"><label for="q18D">D. Home</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 19</div>
+<h2>Which browser feature lets you save frequently visited webpages for quick access later?</h2>
+<div class="options">
+<div class="option"><input id="q19A" type="radio" name="q19" value="A"><label for="q19A">A. Bookmarks</label></div>
+<div class="option"><input id="q19B" type="radio" name="q19" value="B"><label for="q19B">B. Recycle Bin</label></div>
+<div class="option"><input id="q19C" type="radio" name="q19" value="C"><label for="q19C">C. Control Panel</label></div>
+<div class="option"><input id="q19D" type="radio" name="q19" value="D"><label for="q19D">D. File Explorer</label></div>
+</div></div>
+<div class="quiz-card">
+<div class="q-number">Question 20</div>
+<h2>Which browser control is used to move up or down on a webpage?</h2>
+<div class="options">
+<div class="option"><input id="q20A" type="radio" name="q20" value="A"><label for="q20A">A. Scroll bar</label></div>
+<div class="option"><input id="q20B" type="radio" name="q20" value="B"><label for="q20B">B. Address bar</label></div>
+<div class="option"><input id="q20C" type="radio" name="q20" value="C"><label for="q20C">C. Back button</label></div>
+<div class="option"><input id="q20D" type="radio" name="q20" value="D"><label for="q20D">D. Home button</label></div>
+</div></div>
+<button class="submit-btn" type="submit">Submit Quiz</button>
+</form>
+<div class="result" id="result">
+<h2>Quiz Completed!</h2>
+<div class="score" id="score"></div>
+<p id="resultMessage"></p>
+<button class="restart-btn" onclick="location.reload()">Try Again</button>
+</div>
+<div class="footer">ICT Skills – I • Practice Quiz</div>
+</div>
+<script>
+const answers={q1:'A', q2:'B', q3:'B', q4:'C', q5:'A', q6:'B', q7:'B', q8:'B', q9:'C', q10:'D', q11:'B', q12:'A', q13:'B', q14:'A', q15:'A', q16:'A', q17:'B', q18:'C', q19:'A', q20:'A'};
+const form=document.getElementById("quizForm");
+const progressText=document.getElementById("progressText");
+const progressBar=document.getElementById("progressBar");
 
-    <div class="container">
+form.addEventListener("change",function(){
+ let answered=0;
+ for(let i=1;i<=20;i++){
+   if(document.querySelector('input[name="q'+i+'"]:checked')) answered++;
+ }
+ progressText.textContent=answered+" of 20 answered";
+ progressBar.style.width=(answered*5)+"%";
+});
 
-        <a href="#video" class="video-button">🎥 Watch Video</a>
-
-        <div class="message">🌟 Stay Safe, Stay Smart! Your Online Safety Matters! 🔐🌍</div>
-
-        <h1>🔒 Cyber Security – Stay Safe Online 💻</h1>
-        <p>🚀 Introduction to cyber security and why it is essential in the digital world. 🌐</p>
-        <p class="tips">💡 Use an engaging image of a 🔐 lock or shield. Background: blue gradient. Transition: fade-in.</p>
-
-        <div class="slide">
-            <h2>👨‍💻 Introduction to Cyber Security</h2>
-            <p>Cyber security protects computers, networks, and personal data from cyber threats. 🔍🛡️</p>
-            <p>Why does it matter? To keep our personal information and identity safe! 🔑</p>
-        </div>
-
-        <div class="slide">
-            <h2>🚨 How to Stay Safe from Cyberbullying?</h2>
-            <ul>
-                <li>🚫 Block bullies, don't respond.</li>
-                <li>👨‍👩‍👧‍👦 Tell parents or teachers.</li>
-                <li>📷 Take screenshots as proof.</li>
-                <li>🔐 Set strong privacy settings.</li>
-            </ul>
-        </div>
-
-        <div class="message">🚀 Stay Cyber Smart! Protect Yourself & Help Others Stay Safe! 💙💡</div>
-        <p style="text-align: center; font-weight: bold;">🌟 Best wishes from Aman Saraswat 🎉😊</p>
-
-        <a href="more.html" class="video-button" style="background-color:#007BFF">🔎 More on Cyber Security 🔒</a>
-
-        <!-- 🎬 Local Video Section -->
-        <div id="video">
-            <h2 style="text-align:center;">🎬 Hologram Projector</h2>
-            <video controls>
-                <source src="hologram.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-        <!-- 📺 Embedded YouTube Videos -->
-        <div>
-                  <h2 style="text-align:center;">📺 YouTube Video 1 – Voting</h2>
-            <iframe src="https://www.youtube.com/embed/MFD_iT1JfIo" 
-                    title="YouTube Video 2" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-            </iframe>
-            
-            <h2 style="text-align:center;">📺 YouTube Video 2 – Sports</h2>
-            <iframe src="https://www.youtube.com/embed/yJJAutVQWAg?si=p7CsfXZtlER-DD_s" 
-                    title="YouTube Video 1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-            </iframe>
-
-
-        </div>
-
-    </div>
-
-    <div style="text-align: center; font-size: 1.2em; margin-top: 20px;">
-        🔹 Why did the computer catch a cold? <br>
-        🔹 Because it left its Windows open! 🏡💨😂
-    </div>
-
+form.addEventListener("submit",function(e){
+ e.preventDefault();
+ let score=0, unanswered=0;
+ for(let i=1;i<=20;i++){
+   const selected=document.querySelector('input[name="q'+i+'"]:checked');
+   const correct=answers["q"+i];
+   if(!selected){unanswered++;continue;}
+   if(selected.value===correct){
+     score++;
+     selected.nextElementSibling.classList.add("correct");
+   }else{
+     selected.nextElementSibling.classList.add("wrong");
+     const correctInput=document.querySelector('input[name="q'+i+'"][value="'+correct+'"]');
+     correctInput.nextElementSibling.classList.add("correct");
+   }
+ }
+ document.querySelectorAll("input").forEach(function(x){x.disabled=true;});
+ const btn=document.querySelector(".submit-btn");
+ btn.disabled=true;btn.style.opacity=".6";
+ const percentage=score*5;
+ document.getElementById("score").textContent=score+" / 20";
+ document.getElementById("resultMessage").innerHTML=
+   "Your score is <strong>"+percentage+"%</strong>."+
+   (unanswered ? " You left "+unanswered+" question"+(unanswered>1?"s":"")+" unanswered." : " Great attempt!");
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+});
+</script>
 </body>
 </html>
