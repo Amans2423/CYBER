@@ -6,7 +6,7 @@ form.addEventListener("change",function(e){
  const questionCard=selected.closest(".quiz-card");
  const qName=selected.name;
  const qNo=parseInt(qName.replace("q",""),10);
- const correct=answers[qNo];
+ const correct=answers["q"+qNo];
  const feedback=questionCard.querySelector(".instant-feedback");
 
  questionCard.querySelectorAll("label").forEach(function(label){
